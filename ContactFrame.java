@@ -1,5 +1,4 @@
 package DActividad6;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -29,9 +28,10 @@ public class ContactFrame extends JFrame {
         add(inputPanel, BorderLayout.NORTH);
 
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(1, 4));
+        buttonPanel.setLayout(new GridLayout(2, 3));
 
         JButton addButton = new JButton("Add");
+        addButton.setPreferredSize(new Dimension(70, 30));
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -44,6 +44,7 @@ public class ContactFrame extends JFrame {
         buttonPanel.add(addButton);
 
         JButton removeButton = new JButton("Remove");
+        removeButton.setPreferredSize(new Dimension(70, 30));
         removeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -55,17 +56,19 @@ public class ContactFrame extends JFrame {
         buttonPanel.add(removeButton);
 
         JButton searchButton = new JButton("Search");
+        searchButton.setPreferredSize(new Dimension(70, 30));
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String name = nameField.getText();
-                SearchFriend.search(name);
-                resultArea.setText("Contact searched.");
+                String result = SearchFriend.search(name);
+                resultArea.setText(result);
             }
         });
         buttonPanel.add(searchButton);
 
         JButton updateButton = new JButton("Update");
+        updateButton.setPreferredSize(new Dimension(70, 30));
         updateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -77,6 +80,28 @@ public class ContactFrame extends JFrame {
             }
         });
         buttonPanel.add(updateButton);
+
+        JButton clearButton = new JButton("Clear");
+        clearButton.setPreferredSize(new Dimension(70, 30));
+        clearButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                nameField.setText("");
+                numberField.setText("");
+                resultArea.setText("");
+            }
+        });
+        buttonPanel.add(clearButton);
+
+        JButton exitButton = new JButton("Exit");
+        exitButton.setPreferredSize(new Dimension(70, 30));
+        exitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+        buttonPanel.add(exitButton);
 
         add(buttonPanel, BorderLayout.CENTER);
 

@@ -2,7 +2,7 @@ package DActividad6;
 import java.io.*;
 
 public class SearchFriend {
-    public static void search(String name) {
+    public static String search(String name) {
         try {
             File file = new File("friendsContact.txt");
 
@@ -11,13 +11,14 @@ public class SearchFriend {
             String currentLine;
             while ((currentLine = reader.readLine()) != null) {
                 if (currentLine.startsWith(name + "!")) {
-                    System.out.println("Contact found: " + currentLine);
-                    return;
+                    String[] parts = currentLine.split("!");
+                    return "Contact found:\nName: " + parts[0] + "\nNumber: " + parts[1];
                 }
             }
-            System.out.println("Contact not found.");
+            return "Contact not found.";
         } catch (IOException e) {
             e.printStackTrace();
+            return "An error occurred while searching for the contact.";
         }
     }
 }
