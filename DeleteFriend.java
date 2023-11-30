@@ -48,7 +48,4 @@ public class DeleteFriend {
             e.printStackTrace();
         }
     }
-
-
-
 }
